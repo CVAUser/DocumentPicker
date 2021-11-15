@@ -8,8 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UIDocumentPickerDelegate {
+    @IBAction func addMusic(_ sender: Any) {
+        let documentPicker = UIDocumentPickerViewController(documentTypes: ["kUTTypeMPEG4Audio"], in: .import)
+        documentPicker.delegate = self
+        present(documentPicker, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
