@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UIDocumentPickerDelegate {
     @IBAction func addMusic(_ sender: Any) {
-        let documentPicker = UIDocumentPickerViewController(documentTypes: ["kUTTypeMPEG4Audio"], in: .import)
+        let documentPicker = UIDocumentPickerViewController(documentTypes: ["kUTTypeMPEG4Audio", "kUTTypeMP3", "kUTTypeMPEG4"], in: .import)
         documentPicker.delegate = self
         present(documentPicker, animated: true)
     }
@@ -19,7 +19,10 @@ class ViewController: UIViewController, UIDocumentPickerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        if (urls.count == 1) {
+            print("One File Chosed")
+        }
+    }
 }
 
